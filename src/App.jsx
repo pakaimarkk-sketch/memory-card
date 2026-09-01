@@ -1,17 +1,27 @@
-import { useState } from "react";
-import { createPackFromDeck } from "./game/createPackFromDeck";
 import { cards } from "./game/cards";
-import { Card } from "./components/card";
+import { Card } from "./components/Card";
+import { ResultScreen } from "./components/ResultScreen";
+import { useMemoryGame } from "./hooks/useMemoryGame";
 
 export function App() {
-  const [cardOrder, setCardOrder] = useState(() =>
-    createPackFromDeck(cards, 8),
-  );
+  const {
+    cardOrder,
+    score,
+    bestScore,
+    gameStatus,
+    handleCardClick,
+    handlePlayAgain,
+  } = useMemoryGame(cards, 8);
 
-  const [clickedIds, setClickedIds] = useState([]);
-
-  function handleCardClick(id) {
-    console.log(id);
+  if (gameStatus !== "playing") {
+    return (
+      <ResultScreen
+        gameStatus={gameStatus}
+        score={score}
+        bestScore={bestScore}
+        onPlayAgain={handlePlayAgain}
+      />
+    );
   }
 
   return (
