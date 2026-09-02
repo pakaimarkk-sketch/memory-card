@@ -1,12 +1,9 @@
-import { Card } from "./components/Card";
-import { ResultScreen } from "./components/ResultScreen";
-import { useMemoryGame } from "./hooks/useMemoryGame";
-import { cardSets, difficulties } from "../game/gameSelection";
+import { Card } from "./Card";
+import { ResultScreen } from "./ResultScreen";
+import { gameSelections, difficulties } from "../game/gameSelection";
+import { useMemoryGame } from "../hooks/useMemoryGame";
 
-export function MemoryGame({ setup, onChangeSetup }) {
-  const deck = cardSets[setup.deck];
-  const amount = difficulties[setup.difficulty];
-
+export function MemoryGame({ deck, onChangeSetup }) {
   const {
     cardOrder,
     score,
@@ -14,7 +11,7 @@ export function MemoryGame({ setup, onChangeSetup }) {
     gameStatus,
     handleCardClick,
     handlePlayAgain,
-  } = useMemoryGame(deck, amount);
+  } = useMemoryGame(deck);
 
   if (gameStatus !== "playing") {
     return (

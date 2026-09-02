@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { cardSets, difficulties } from "../game/gameSelection";
+import { gameSelections } from "../game/gameSelection";
 
 export function StarterScreen({ onStartGame }) {
-  const [setupStep, setSetupStep] = useState("deck");
+  const [setupStep, setSetupStep] = useState("difficulty");
 
   const [setup, setSetup] = useState({
     deck: null,
@@ -10,22 +10,17 @@ export function StarterScreen({ onStartGame }) {
   });
 
   function handleSelect(type, value) {
-    setSetup((prevSetup) => ({
-      ...prevSetup,
+    const nextSetup = {
+      ...setup,
       [type]: value,
-    }));
+    };
 
-    if (type === "deck") {
-      setSetupStep("difficulty");
-    }
+    setSetup(nextSetup);
 
     if (type === "difficulty") {
       onStartGame(nextSetup);
     }
   }
-
-  const options =
-    setupStep === "deck" ? Object.keys(cardSets) : Object.keys(difficulties);
 
   return (
     <section>
