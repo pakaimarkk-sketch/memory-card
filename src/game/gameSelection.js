@@ -2,14 +2,14 @@ import { fetchPokemonDeck } from "../api/pokemonApi";
 
 export const gameSelections = {
   deck: ["pokemon", "cars", "animals"],
-  difficulty: ["easy", "medium", "hard", "hell"],
+  difficulty: ["Easy", "Medium", "Hard", "Hell"],
 };
 
 export const difficulties = {
-  easy: 6,
-  medium: 8,
-  hard: 12,
-  hell: 20,
+  Easy: 6,
+  Medium: 8,
+  Hard: 12,
+  Hell: 20,
 };
 
 export async function startGame(setup) {

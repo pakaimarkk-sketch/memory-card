@@ -1,7 +1,7 @@
 import { Card } from "./Card";
 import { ResultScreen } from "./ResultScreen";
-import { gameSelections, difficulties } from "../game/gameSelection";
 import { useMemoryGame } from "../hooks/useMemoryGame";
+import "../style/memoryGame.css";
 
 export function MemoryGame({ deck, onChangeSetup }) {
   const {
@@ -12,6 +12,8 @@ export function MemoryGame({ deck, onChangeSetup }) {
     handleCardClick,
     handlePlayAgain,
   } = useMemoryGame(deck);
+
+  const amount = deck.length;
 
   if (gameStatus !== "playing") {
     return (
@@ -26,10 +28,12 @@ export function MemoryGame({ deck, onChangeSetup }) {
   }
 
   return (
-    <main>
-      {cardOrder.map((card) => (
-        <Card key={card.id} card={card} onCardClick={handleCardClick} />
-      ))}
+    <main className="game-board">
+      <div className={`game-board game-board-${amount}`}>
+        {cardOrder.map((card) => (
+          <Card key={card.id} card={card} onCardClick={handleCardClick} />
+        ))}
+      </div>
     </main>
   );
 }

@@ -14,11 +14,16 @@ export function App() {
     setScreen("game");
   }
 
+  function handleChangeSetup() {
+    setDeck([]);
+    setScreen("setup");
+  }
+
   if (screen === "setup") {
     return <StarterScreen onStartGame={handleStartGame} />;
   }
 
   if (screen === "game") {
-    return <MemoryGame deck={deck} />;
+    return <MemoryGame deck={deck} onChangeSetup={handleChangeSetup} />;
   }
 }

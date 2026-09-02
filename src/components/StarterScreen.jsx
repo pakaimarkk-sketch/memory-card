@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { gameSelections } from "../game/gameSelection";
+import "../style/starterScreen.css";
 
 export function StarterScreen({ onStartGame }) {
   const [setupStep, setSetupStep] = useState("difficulty");
@@ -23,18 +24,20 @@ export function StarterScreen({ onStartGame }) {
   }
 
   return (
-    <section>
-      <h1>Select {setupStep}</h1>
-
-      {gameSelections[setupStep].map((option) => (
-        <button
-          key={option}
-          type="button"
-          onClick={() => handleSelect(setupStep, option)}
-        >
-          {option}
-        </button>
-      ))}
+    <section className="starter-screen">
+      <h1 className="difficulty-header">Select {setupStep}</h1>
+      <div className="difficulty-options">
+        {gameSelections[setupStep].map((option) => (
+          <button
+            className="difficulty-button"
+            key={option}
+            type="button"
+            onClick={() => handleSelect(setupStep, option)}
+          >
+            {option}
+          </button>
+        ))}
+      </div>
     </section>
   );
 }

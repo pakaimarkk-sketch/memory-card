@@ -1,3 +1,5 @@
+import "../style/resultScreen.css";
+
 export function ResultScreen({
   gameStatus,
   score,
@@ -6,14 +8,38 @@ export function ResultScreen({
   onChangeSetup,
 }) {
   return (
-    <section>
-      <h1>{gameStatus === "won" ? "You won!" : "You lost!"}</h1>
+    <section className="result-screen">
+      <div className="result-panel">
+        <h1>{gameStatus === "won" ? "You won!" : "You lost!"}</h1>
 
-      <p>Score: {score}</p>
-      <p>Best score: {bestScore}</p>
+        <div className="score-board">
+          <div className="score">
+            <span>Score</span>
+            <strong>{score}</strong>
+          </div>
 
-      <button onClick={onPlayAgain}>Play again</button>
-      <button onClick={onChangeSetup}>Change setup</button>
+          <div className="score">
+            <span>Best</span>
+            <strong>{bestScore}</strong>
+          </div>
+        </div>
+
+        <div className="result-actions">
+          <button
+            className="result-button result-button-primary"
+            onClick={onPlayAgain}
+          >
+            Play Again
+          </button>
+
+          <button
+            className="result-button result-button-secondary"
+            onClick={onChangeSetup}
+          >
+            Change Difficulty
+          </button>
+        </div>
+      </div>
     </section>
   );
 }
