@@ -1,0 +1,96 @@
+.game-board {
+  display: grid;
+  gap: 1rem;
+  width: min(1200px, 100%);
+  margin: 0 auto;
+}
+
+.game-board-6 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.game-board-8 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.game-board-12 {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.game-board-20 {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.card {
+  border: none;
+  border-radius: 16px;
+  padding: 1rem;
+
+  background: #f8fafc;
+  color: #111827;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+.card:active {
+  transform: scale(0.96);
+}
+
+.card-image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+.card-name {
+  margin-top: 0.5rem;
+
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.card {
+  animation: appear 0.25s ease;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 700px) {
+  .game-board-6,
+  .game-board-8 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .game-board-12,
+  .game-board-20 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .game-board-12,
+  .game-board-20 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

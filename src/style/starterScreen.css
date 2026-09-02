@@ -1,0 +1,40 @@
+.starter-screen {
+  min-height: calc(100vh - 4rem);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 2rem;
+}
+
+.difficulty-header {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.difficulty-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.difficulty-button {
+  padding: 1.2rem 2rem;
+
+  border: 2px solid transparent;
+  border-radius: 14px;
+
+  background: #f8fafc;
+  color: #111827;
+
+  transition: 0.2s;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.difficulty-button:hover {
+  border-color: #facc15;
+  transform: translateY(-3px);
+}
