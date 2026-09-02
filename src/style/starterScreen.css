@@ -1,40 +1,93 @@
 .starter-screen {
-  min-height: calc(100vh - 4rem);
+  width: min(550px, 90%);
+  margin: 0 auto;
+  padding: 3rem;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-
   gap: 2rem;
+
+  background: #1f2937;
+  border: 2px solid #facc15;
+  border-radius: 20px;
+
+  text-align: center;
+
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
 .difficulty-header {
+  margin: 0;
+
   font-size: 3rem;
-  font-weight: 800;
+  text-transform: capitalize;
+}
+
+.game-description {
+  margin: 0;
+  max-width: 450px;
+  font-size: 1.1rem;
+
+  color: #d1d5db;
+  line-height: 1.6;
 }
 
 .difficulty-options {
+  width: 100%;
+
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
 
 .difficulty-button {
-  padding: 1.2rem 2rem;
+  padding: 1rem;
 
   border: 2px solid transparent;
-  border-radius: 14px;
+  border-radius: 12px;
 
   background: #f8fafc;
   color: #111827;
 
-  transition: 0.2s;
-  font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: capitalize;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .difficulty-button:hover {
-  border-color: #facc15;
   transform: translateY(-3px);
+
+  border-color: #facc15;
+
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+.difficulty-button:active {
+  transform: scale(0.96);
+}
+
+@media (max-width: 500px) {
+  .starter-screen {
+    padding: 1.5rem;
+  }
+
+  .difficulty-options {
+    grid-template-columns: 1fr;
+  }
+
+  .difficulty-header {
+    font-size: 2.5rem;
+  }
+
+  .game-description {
+    font-size: 0.9rem;
+  }
 }
